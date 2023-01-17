@@ -15,7 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from ordersManagement import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls), # Admin panel
+    path('search_item/', views.search_item),
+    path('search/', views.search),
 ]
