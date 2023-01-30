@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from ordersManagement.models import Item
+from ordersManagement.forms import ContactForm
 
 # Create your views here.
 
@@ -27,6 +28,12 @@ def search(request):
 def contact(request):
 
     if request.method == "POST":
-        return render(request, 'thankyou.html')
-
-    return render(request, 'contact.html')
+        myForm = ContactForm(request.POST)
+        
+        if myForm.is_valid():
+            dataForm = myForm.cleaned_data
+            print(dataForm)
+            return render(request, 'thankyou.html')
+    else:
+        myForm = ContactForm()
+    return render(request, 'contact_form.html',{'form': myForm})
