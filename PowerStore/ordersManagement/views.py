@@ -5,6 +5,9 @@ from ordersManagement.forms import ContactForm
 
 # Create your views here.
 
+def home(request):
+    return render(request, "home.html")
+
 def search_item(request):
 
     return render(request, "search_item.html")
