@@ -8,8 +8,28 @@ from ordersManagement.forms import ContactForm
 def home(request):
     return render(request, "home.html")
 
-def search_item(request):
+def services(request):
+    return render(request, "services.html")
 
+def store(request):
+    return render(request, "store.html")
+
+def contact(request):
+    if request.method == "POST":
+        myForm = ContactForm(request.POST)
+        
+        if myForm.is_valid():
+            dataForm = myForm.cleaned_data
+            print(dataForm)
+            return render(request, 'thankyou.html')
+    else:
+        myForm = ContactForm()
+    return render(request, 'contact_form.html',{'form': myForm})
+
+def blog(request):
+    return render(request, "blog.html")
+
+def search_item(request):
     return render(request, "search_item.html")
 
 def search(request):
@@ -28,15 +48,3 @@ def search(request):
 
     return HttpResponse(message)
 
-def contact(request):
-
-    if request.method == "POST":
-        myForm = ContactForm(request.POST)
-        
-        if myForm.is_valid():
-            dataForm = myForm.cleaned_data
-            print(dataForm)
-            return render(request, 'thankyou.html')
-    else:
-        myForm = ContactForm()
-    return render(request, 'contact_form.html',{'form': myForm})

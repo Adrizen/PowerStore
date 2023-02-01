@@ -19,8 +19,11 @@ from ordersManagement import views
 
 urlpatterns = [
     path('admin/', admin.site.urls), # Admin panel
-    path('home/', views.home),
-    path('search_item/', views.search_item),
-    path('search/', views.search),
-    path('contact/', views.contact),
+    path('home/', views.home, name="home"),
+    path('services/', views.services, name="services"),
+    path('store/', views.store, name="store"),
+    path('blog/', views.blog, name="blog"),
+    path('search_item/', views.search_item, name="searchItem"),
+    path('search/', views.search, name="search"),
+    path('contact/', views.contact, name="contact"),
 ]
